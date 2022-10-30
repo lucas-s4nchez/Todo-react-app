@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 export const TodoForm = ({ onAddTodo }) => {
   const [formState, setFormState] = useState({
@@ -40,4 +41,8 @@ export const TodoForm = ({ onAddTodo }) => {
       </button>
     </form>
   );
+};
+
+TodoForm.propTypes = {
+  onAddTodo: PropTypes.func.isRequired,
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 export const TodoItem = ({ todo, onDeleteTodo, onCompleteTodo }) => {
   return (
@@ -26,4 +26,10 @@ export const TodoItem = ({ todo, onDeleteTodo, onCompleteTodo }) => {
       </div>
     </li>
   );
+};
+
+TodoItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
+  onCompleteTodo: PropTypes.func.isRequired,
 };
