@@ -1,12 +1,28 @@
 import React from "react";
 
-export const TodoItem = () => {
+export const TodoItem = ({ todo, onDeleteTodo, onCompleteTodo }) => {
   return (
-    <li className="list-group-item d-flex justify-content-between align-items-center">
-      <span>Aprender React desde cero con fernando herrera</span>
+    <li
+      className={`list-group-item p-2 d-flex justify-content-between align-items-center ${
+        todo.done ? "border border-success" : ""
+      } `}
+    >
+      <span>{todo.description}</span>
       <div className="d-flex flex-column gap-2">
-        <button className="btn btn-outline-danger ms-2">Eliminar</button>
-        <button className="btn btn-outline-success ms-2">Terminada</button>
+        <button
+          onClick={() => onDeleteTodo(todo.id)}
+          className="btn btn-outline-danger ms-2"
+        >
+          Eliminar
+        </button>
+        <button
+          onClick={() => onCompleteTodo(todo.id)}
+          className={` btn ${
+            todo.done ? "btn-success" : "btn-outline-success"
+          } ms-2`}
+        >
+          {todo.done ? "Completada" : "Completar"}
+        </button>
       </div>
     </li>
   );

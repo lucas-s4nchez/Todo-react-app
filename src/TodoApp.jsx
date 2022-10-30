@@ -9,6 +9,7 @@ export const TodoApp = () => {
     todoState,
     todoCount,
     todoPendingCount,
+    todoCompleteCount,
     handleAddTodo,
     handleCompleteTodo,
     handleDeleteTodo,
@@ -17,7 +18,11 @@ export const TodoApp = () => {
     <div className="container">
       <h1 className="my-4">TodoApp</h1>
       <div className="row gap-2 mb-4">
-        <TodoCounter count={todoCount} pendingCount={todoPendingCount} />
+        <TodoCounter
+          count={todoCount}
+          pendingCount={todoPendingCount}
+          completeCount={todoCompleteCount}
+        />
       </div>
       <div className="row">
         <div className="col-xs-12 col-md-5 mb-3">

@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { todoReducer } from "../helpers/todoReducer";
 
-const init = () => JSON.parse(localStorage.getItem("todos"));
+const init = () => JSON.parse(localStorage.getItem("todos")) || [];
 export const useTodo = () => {
   const [todoState, dispatch] = useReducer(todoReducer, [], init);
 
@@ -11,7 +11,7 @@ export const useTodo = () => {
 
   const handleAddTodo = (todo) => {
     dispatch({
-      type: "Ad Todo",
+      type: "Add Todo",
       payload: todo,
     });
   };
@@ -28,12 +28,14 @@ export const useTodo = () => {
     });
   };
   const todoCount = todoState.length;
+  const todoCompleteCount = todoState.filter((todo) => todo.done).length;
   const todoPendingCount = todoState.filter((todo) => !todo.done).length;
 
   return {
     todoState,
     todoCount,
     todoPendingCount,
+    todoCompleteCount,
     handleAddTodo,
     handleCompleteTodo,
     handleDeleteTodo,
